@@ -12,4 +12,6 @@ Conexion a DynamoDB:
     3. GET - https://zjlvihs5xc.execute-api.us-east-1.amazonaws.com/dev/dynamo/{id}
     4. POST - https://zjlvihs5xc.execute-api.us-east-1.amazonaws.com/dev/dynamo
 
-Cada endpoint tiene una documentacion detallada en swagger: https://app.swaggerhub.com/apis/CARLOSHUAYAMARESD/swagger/1.0.0
+Cada endpoint tiene una documentacion detallada en swagger: 
+
+    https://app.swaggerhub.com/apis-docs/CARLOSHUAYAMARESD/swagger/1.0.0
