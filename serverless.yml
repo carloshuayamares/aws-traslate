@@ -1,0 +1,77 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: traslate-aws
+# app and org for use with dashboard.serverless.com
+app: traslate-aws
+org: carloshuayamares
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:*
+      Resource:
+        - arn:aws:dynamodb:us-east-1:545124311882:table/TaskTable
+
+plugins:
+  - serverless-offline
+
+functions:
+  getSwapiAll:
+    handler: src/getTask.getSwapiAll
+    events:
+      - http:
+          method: GET
+          path: /swapi/{route}
+
+  getSwapiOne:
+    handler: src/getTask.getSwapiOne
+    events:
+      - http:
+          method: GET
+          path: /swapi/{route}/{subRoute}
+  getDynamo:
+    handler: src/getTask.getDynamo
+    events:
+      - http:
+          method: GET
+          path: /dynamo/{id}
+
+  addDynamo:
+    handler: src/addTask.addDynamo
+    events:
+      - http:
+          method: POST
+          path: /dynamo
+
+resources:
+  Resources:
+    TaskTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: TaskTable
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
