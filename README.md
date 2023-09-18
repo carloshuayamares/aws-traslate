@@ -3,9 +3,12 @@ API con conexion a AWS y a SWAPI, que traduce las llaves a español y almacena d
 
 Para realizar pruebas, tiene que hacer consultas a las siguientes endpoints:
 Traduccion de SWAPI:
+
     1. GET - https://zjlvihs5xc.execute-api.us-east-1.amazonaws.com/dev/swapi/{route}
     2. GET - https://zjlvihs5xc.execute-api.us-east-1.amazonaws.com/dev/swapi/{route}/{subRoute}
+    
 Conexion a DynamoDB:
+
     3. GET - https://zjlvihs5xc.execute-api.us-east-1.amazonaws.com/dev/dynamo/{id}
     4. POST - https://zjlvihs5xc.execute-api.us-east-1.amazonaws.com/dev/dynamo
 
